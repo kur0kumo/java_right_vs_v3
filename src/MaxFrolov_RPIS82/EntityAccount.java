@@ -46,3 +46,4 @@ public class EntityAccount extends AbstractAccount implements Account{
                 tariff.getSize()==((EntityAccount)obj).tariff.getSize();
     }
 }
+
