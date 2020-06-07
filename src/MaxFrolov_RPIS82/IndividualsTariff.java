@@ -5,8 +5,6 @@ public class IndividualsTariff {
     private Service[] services;
     private int capacity;
     private int size;
-    private final int DEFAULT_CAPACITY = 8;
-    private final int MAINTENANCE_COST = 50;
 
     public IndividualsTariff() {
         this.services = new Service[8];
