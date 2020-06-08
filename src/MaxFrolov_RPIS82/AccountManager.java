@@ -28,11 +28,7 @@ public class AccountManager {
         for(int i = 0; i < this.accounts.length; ++i)
             if(accounts[i].getNumber()==account.getNumber())
                 throw new DublicateAccountNumberException();
-        if (this.size == this.capacity) {
-            IndividualAccount[] newAccounts = new IndividualAccount[this.capacity *= 2];
-            System.arraycopy(this.accounts, 0, newAccounts, 0, this.accounts.length);
-            this.accounts = newAccounts;
-        }
+        doubleCapacity();
 
         for(int i = 0; i < this.accounts.length; ++i) {
             if (this.accounts[i] == null) {
@@ -43,6 +39,14 @@ public class AccountManager {
         }
 
         return false;
+    }
+
+    private void doubleCapacity(){
+        if (this.size == this.capacity) {
+            IndividualAccount[] newAccounts = new IndividualAccount[this.capacity *= 2];
+            System.arraycopy(this.accounts, 0, newAccounts, 0, this.accounts.length);
+            this.accounts = newAccounts;
+        }
     }
 
     public boolean add(IndividualAccount account, int position) throws DublicateAccountNumberException {
