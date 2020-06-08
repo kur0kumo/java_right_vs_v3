@@ -17,13 +17,8 @@ public class AccountManager {
         this.accounts = newAccounts;
     }
 
-    public boolean add(IndividualAccount account) {
-        if (this.size == this.capacity) {
-            IndividualAccount[] newAccounts = new IndividualAccount[this.capacity *= 2];
-            System.arraycopy(this.accounts, 0, newAccounts, 0, this.accounts.length);
-            this.accounts = newAccounts;
-        }
-
+    public boolean add(IndividualAccount account){
+        doubleCapacity();
         for(int i = 0; i < this.accounts.length; ++i) {
             if (this.accounts[i] == null) {
                 this.accounts[i] = account;
@@ -33,6 +28,14 @@ public class AccountManager {
         }
 
         return false;
+    }
+
+    private void doubleCapacity(){
+        if (this.size == this.capacity) {
+            IndividualAccount[] newAccounts = new IndividualAccount[this.capacity *= 2];
+            System.arraycopy(this.accounts, 0, newAccounts, 0, this.accounts.length);
+            this.accounts = newAccounts;
+        }
     }
 
     public boolean add(IndividualAccount account, int position) {
